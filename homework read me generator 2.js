@@ -72,10 +72,11 @@ function writeToFile(fileName, data) {
 };
 // TODO: Create a function to initialize app
 function init() {
-    inquirer.prompt(questions).then((answers) => {
-        writeToFile('readme.md' , generateMarkdown({ ...answers}))
-    })
-}
+    inquirer.prompt(questions).then(function (userInput)  {
+            console.log(userInput)
+        writeToFile('readme.md' , generateMarkdown(userInput));
+    });
+};
 
 # Table of Contents
 1. [Description](#description)
