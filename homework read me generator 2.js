@@ -29,10 +29,10 @@ const questions = [
       message: ' What is the project used for? '
   },
   {
-      type: 'list' ,
+      type: 'checkbox' ,
       name: 'license'  ,
       message: ' Chose the appropriate license for this project:' ,
-      choices: [ 'Mit', 'Apache' 'BSD' 'GPL'  ]
+      choices: ['Mit', 'Apache', 'BSD', 'GPL', 'none']
   },
   {
       type: 'input' ,
@@ -63,9 +63,13 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    return fs.writeFileSync( path.join(process.cwd(), fileName ) , data)
-}
-
+    fs.writeFile(fileName, data, (err) => {
+        if (err) {
+         console.log(err)
+          }  else {
+        console.log('Success!)
+    });
+};
 // TODO: Create a function to initialize app
 function init() {
     inquirer.prompt(questions).then((answers) => {
