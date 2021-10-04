@@ -27,8 +27,31 @@ function generateMarkdown(data) {
 7. [Questions](#questions)
 8. [Contact](#contact)
 
+# Description\n
+${response.description}\n
+
 # Installation\n
 ${response.installation}\n
+
+# Usage\n
+${response.usage}\n
+
+# License\n
+${response.license}\n
+
+# Contributing\n
+${response.contributing}\n
+
+# Tests\n
+${response.tests}\n
+
+# Questions\n
+${response.questions}\n
+
+# Contact\n
+${response.contact}\n
+
+
 
 `;
 }

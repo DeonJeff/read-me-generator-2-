@@ -29,10 +29,10 @@ const questions = [
       message: ' What is the project used for? '
   },
   {
-      type: 'checkbox' ,
+      type: 'list' ,
       name: 'license'  ,
       message: ' Chose the appropriate license for this project:' ,
-      choices: ['Mit', 'Apache', 'BSD', 'GPL', 'none']
+      choices: [ 'Mit',  ]
   },
   {
       type: 'input' ,
@@ -63,20 +63,15 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-    fs.writeFile(fileName, data, (err) => {
-        if (err) {
-         console.log(err)
-          }  else {
-        console.log('Success!)
-    });
-};
+    return fs.writeFileSync( path.join(process.cwd(), fileName ) , data)
+}
+
 // TODO: Create a function to initialize app
 function init() {
-    inquirer.prompt(questions).then(function (userInput)  {
-            console.log(userInput)
-        writeToFile('readme.md' , generateMarkdown(userInput));
-    });
-};
+    inquirer.prompt(questions).then((answers) => {
+        writeToFile('readme.md' , generateMarkdown({ ...answers}))
+    })
+}
 
 # Table of Contents
 1. [Description](#description)
@@ -98,7 +93,7 @@ function init() {
 ## Questions
 ### [GitHub](github.com/DeonJeff)
 ### [Email](http://www.jeff.d.937@gmail.com) 
- 
+## [Fourth Example](http://www.fourthexample.com) 
 
 // Function call to initialize app
 init();
