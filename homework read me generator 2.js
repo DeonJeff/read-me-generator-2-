@@ -4,8 +4,10 @@ const fs = require('fs');
 const path = require('path');
 const generateMarkdown = require('./utils/generateMarkdown');
 const { getMaxListeners } = require('process');
+const writeFileasync = util.promisify(fs.writeFile);
 // TODO: Create an array of questions for user input
-const questions = [
+function promptUser() {
+    return inquirer.prompt ([
     {
         type: 'input' ,
         name: 'project tittle'  ,
@@ -30,9 +32,12 @@ const questions = [
   },
   {
       type: 'checkbox' ,
-      name: 'license'  ,
       message: ' Chose the appropriate license for this project:' ,
-      choices: [ 'Mit', 'Apache' ,  ]
+      choices: [
+           'Mit',
+            'Apache' , 
+            ' BSD' ],
+      name: 'license'  
   },
   {
       type: 'input' ,
@@ -80,11 +85,6 @@ async function init() {
         console.log(err);
     }
     }
-
-
-
-
-
 
 // Function call to initialize app
 init();

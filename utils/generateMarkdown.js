@@ -11,11 +11,11 @@ function renderLicenseLink(license) {}
 function renderLicenseSection(license) {}
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown(data) {
-  return `# ${data.title}\n
+function generateMarkdown(response) {
+  return `# ${response.title}
+  [License](https://opensource.org/licenses/${response.license})
 
-  # Description
-  ${response.description}\n
+  
 
   # Table of Contents
 1. [Description](#description)
@@ -25,34 +25,34 @@ function generateMarkdown(data) {
 5. [Contributing](#contributing)
 6. [Tests](#tests)
 7. [Questions](#questions)
-8. [Contact](#contact)
-
-# Description\n
-${response.description}\n
-
-# Installation\n
-${response.installation}\n
-
-# Usage\n
-${response.usage}\n
-
-# License\n
-${response.license}\n
-
-# Contributing\n
-${response.contributing}\n
-
-# Tests\n
-${response.tests}\n
-
-# Questions\n
-${response.questions}\n
-
-# Contact\n
-${response.contact}\n
 
 
+# Description:
+${response.description}
 
+# Installation
+${response.installation}
+
+# Usage
+${response.usage}
+
+# License:
+For more info about the License
+![License](https://img.shields.io/badge/License-${response.license}-blue.svg 'License Badge')
+- [License](https://opensource.org/licenses/${response.license})
+${response.license}
+
+# Contributing
+${response.contributing}
+
+# Tests
+${response.tests}
+
+# Questions
+For questions go to my github page
+-[GitHub Profile](https://github.com/${response.username})
+
+For additional questions email me:  ${response.email}.
 `;
 }
 
