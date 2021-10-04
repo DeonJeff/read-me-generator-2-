@@ -29,10 +29,10 @@ const questions = [
       message: ' What is the project used for? '
   },
   {
-      type: 'list' ,
+      type: 'checkbox' ,
       name: 'license'  ,
       message: ' Chose the appropriate license for this project:' ,
-      choices: [ 'Mit',  ]
+      choices: [ 'Mit', 'Apache' ,  ]
   },
   {
       type: 'input' ,
@@ -58,8 +58,9 @@ const questions = [
       type: ' input ' ,
       name: ' email ' ,
       message: ' please enter your email:'
-  }
-]
+  },
+]);
+
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
@@ -67,33 +68,23 @@ function writeToFile(fileName, data) {
 }
 
 // TODO: Create a function to initialize app
-function init() {
-    inquirer.prompt(questions).then((answers) => {
-        writeToFile('readme.md' , generateMarkdown({ ...answers}))
-    })
-}
+async function init() {
+    try {
+        const response = await promptUser();
 
-# Table of Contents
-1. [Description](#description)
-2. [Installation](#installation)
-3. [Usage](#usage)
-4. [License](#license)
-5. [Contributing](#contributing)
-6. [Tests](#tests)
-7. [Questions](#questions)
-              1.[GitHub](#githubgithub.com/DeonJeff)
-              2.[Email](#emailwwwjeff.d.937@gmail.com)
+        const readMe = generateMarkdown(response);
 
-## Description
-## Installation
-## Usage
-## License
-## Contributing
-## Tests
-## Questions
-### [GitHub](github.com/DeonJeff)
-### [Email](http://www.jeff.d.937@gmail.com) 
-## [Fourth Example](http://www.fourthexample.com) 
+        await writeFileasync('README.md', readme);
+        console.log('success!');
+    } catch (err) {
+        console.log(err);
+    }
+    }
+
+
+
+
+
 
 // Function call to initialize app
 init();
