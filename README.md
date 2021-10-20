@@ -14,13 +14,13 @@
 
 
 # Description:
-this is my readme generator
+this is a readme generator
 
 # Installation
-node
+nodejs
 
 # Usage
-to generaate a readme
+its used to make a readme
 
 # License:
 For more info about the License
@@ -29,7 +29,7 @@ For more info about the License
  
 
 # Contributing
-im the only one
+i am the only one working on this project
 
 # Tests
 no
